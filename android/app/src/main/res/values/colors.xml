@@ -1,0 +1,7 @@
+<resources>
+    <!-- Splash background — matches the first stop of theme.gradients.loader
+         (#322B3B) so the system bars and the pre-bridge window agree with the
+         in-app LoaderScreen. It sits underneath @drawable/splash_screen and
+         fills any letterbox the splash bitmap leaves. -->
+    <color name="splashBackground">#322B3B</color>
+</resources>

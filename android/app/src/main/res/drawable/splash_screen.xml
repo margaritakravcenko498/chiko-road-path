@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Window background drawn by Android before the JS bundle boots. Painting the
+     loader artwork here (instead of a flat colour) means the very first frame a
+     capture tool can grab is already branded loader content, never a black
+     rectangle. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/splashBackground" />
+    <item>
+        <bitmap
+            android:src="@drawable/splash_bg"
+            android:gravity="fill" />
+    </item>
+</layer-list>
