@@ -1,0 +1,39 @@
+{
+  "assets": [
+    {
+      "name": "icon_1024",
+      "type": "icon",
+      "prompt": "App icon, one single glossy 3D cartoon hen standing on one bold terracotta arrow tile, centered, warm cream to honey radial gradient background, crisp, no text, no scene"
+    },
+    {
+      "name": "bg_loader",
+      "type": "bg",
+      "prompt": "Vertical 9:16 mobile game loader background, dark plum farmyard at night, moody deep purple and brown, soft vignette, cinematic, no text, no UI elements"
+    },
+    {
+      "name": "bg_menu",
+      "type": "bg",
+      "prompt": "Vertical 9:16 mobile game menu background, sunlit cartoon farmyard with wooden fence and warm cream honey tones, vibrant 3D render, no text, no UI elements"
+    },
+    {
+      "name": "bg_game",
+      "type": "bg",
+      "prompt": "Vertical 9:16 mobile game background, soft blurred farmyard field, very low contrast pale cream and sage green, flat lighting for UI overlay, no text, no UI elements"
+    },
+    {
+      "name": "sprite_chiko",
+      "type": "sprite",
+      "prompt": "One single cute cartoon hen, side view walking pose, glossy 3D render, centered icon, isolated on plain white, no other objects"
+    },
+    {
+      "name": "sprite_coop",
+      "type": "sprite",
+      "prompt": "One single cute cartoon wooden chicken coop house, glossy 3D render, centered icon, isolated on plain white, no other objects"
+    },
+    {
+      "name": "sprite_rock",
+      "type": "sprite",
+      "prompt": "One single cartoon grey garden stone boulder, glossy 3D render, centered icon, isolated on plain white, no other objects"
+    }
+  ]
+}
