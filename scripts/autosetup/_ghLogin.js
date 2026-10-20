@@ -1,7 +1,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const { spawn } = require("node:child_process");
-const { loadGitCredentials } = require("./jiraExtras");
+const { loadGitCredentials, restoreGitHubDesktopCredentialHelper } = require("./jiraExtras");
 
 function redact(text) {
   return String(text || "")
@@ -58,6 +58,10 @@ async function main() {
   const code = await new Promise((resolve) => child.on("close", resolve));
   console.log(`gh_auth_exit=${code} out_len=${out.length}`);
   console.log(JSON.stringify(redact(out)));
+  if (code === 0) {
+    restoreGitHubDesktopCredentialHelper();
+    console.log("git_credential_helper=manager");
+  }
   process.exit(code || 0);
 }
 

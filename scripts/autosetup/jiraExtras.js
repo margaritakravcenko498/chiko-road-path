@@ -1,3 +1,4 @@
+const { spawnSync } = require("node:child_process");
 const { jiraAdfToPlainText, resolveJiraConfig } = require("./fetchJiraTask");
 
 const FB_HASH_FIELD = "customfield_10067";
@@ -151,11 +152,25 @@ async function setFacebookFields(meta, keyHash, className) {
   return { issueKey: cfg.issueKey, hashField, classField };
 }
 
+function restoreGitHubDesktopCredentialHelper() {
+  // `gh auth login --git-protocol https` sets a blank helper plus
+  // `gh auth git-credential`, which hides Git Credential Manager.
+  // GitHub Desktop then asks to sign in via the browser on Publish/Push.
+  // gh API calls use ~/.config/gh and do not need this helper.
+  for (const key of [
+    "credential.https://github.com.helper",
+    "credential.https://gist.github.com.helper",
+  ]) {
+    spawnSync("git", ["config", "--global", "--unset-all", key], { windowsHide: true });
+  }
+}
+
 module.exports = {
   FB_HASH_FIELD,
   FB_CLASS_FIELD,
   GIT_URL_FIELD,
   DETAILS_FIELD,
+  restoreGitHubDesktopCredentialHelper,
   redactSecrets,
   fieldToText,
   extractGitToken,

@@ -2,7 +2,12 @@ const fs = require("node:fs/promises");
 const os = require("node:os");
 const path = require("node:path");
 const { spawnSync } = require("node:child_process");
-const { loadGitCredentials, parseGithubOwnerRepo, redactSecrets } = require("./jiraExtras");
+const {
+  loadGitCredentials,
+  parseGithubOwnerRepo,
+  redactSecrets,
+  restoreGitHubDesktopCredentialHelper,
+} = require("./jiraExtras");
 
 function runGit(args, cwd) {
   const result = spawnSync("git", args, {
@@ -161,6 +166,7 @@ async function resolveRepoFromToken(token, rootPath) {
 }
 
 async function attachGitFromJira(rootPath, meta) {
+  restoreGitHubDesktopCredentialHelper();
   const creds = await loadGitCredentials(meta);
   if (!creds.token) {
     throw new Error(

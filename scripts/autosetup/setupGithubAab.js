@@ -1,7 +1,7 @@
 const fs = require("node:fs/promises");
 const path = require("node:path");
 const { spawnSync } = require("node:child_process");
-const { redactSecrets } = require("./jiraExtras");
+const { redactSecrets, restoreGitHubDesktopCredentialHelper } = require("./jiraExtras");
 
 function run(cmd, args, { cwd, token, input } = {}) {
   const result = spawnSync(cmd, args, {
@@ -203,6 +203,7 @@ async function githubRepo(token, owner, repo) {
 }
 
 async function setupGithubAab(rootPath, gitInfo) {
+  restoreGitHubDesktopCredentialHelper();
   if (!gitInfo || gitInfo.skippedRemote) {
     return {
       ok: true,
